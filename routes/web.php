@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('admin.clients');
-});
+Route::get('/', [ProdutoController::class, 'index']);
+
+
+
+
+
+/////////////
+// PARTE 1 //
+/////////////
+
+// Route::get('/empresa', function() {
+//     return view('site/empresa');
+// });
+
+// Refactoring da rota /empresa que retorna apenas a view empresa
+// A view emprea está localizada em resources/views/site/empresa.blade.php
+
+// Route::any('/any', function() {
+//     return "Permite todo tipo de acesso http (put, delete, get, post)";
+// });
+
+// Route::match(['put', 'delete'],'/match', function() {
+//     return "Permite apenas acessos definidos";
+// });
+
+// Route::get('produto/{id}/{categoria?}', function($id, $cat = 'Default') {
+//     return "O id do produto é: ".$id." e a categoria é: ".$cat;
+// });
+
+// Route::redirect('/sobre', '/empresa');
+// Route::view('/empresa', 'site/empresa');
+
+// Route::get('/timesnownews', function(){
+//     return view('/news');
+// })->name('noticias');
+
+// Route::get('/novidades', function(){
+//     return redirect()->route('noticias');
+// });
 
 /////////////
 // PARTE 2 //
@@ -67,61 +104,23 @@ Route::get('/', function () {
 // Agrupando as Rotas por NAME e PREFIX //
 //////////////////////////////////////////
 
-Route::group([
+// Route::group([
 
-        'prefix' => 'admin',
-        'as' => 'admin.' 
+//         'prefix' => 'admin',
+//         'as' => 'admin.' 
 
-    ], function(){
+//     ], function(){
 
-    Route::get('dashboard', function(){
-        return "dashboard";
-    })->name('dashboard');
+//     Route::get('dashboard', function(){
+//         return "dashboard";
+//     })->name('dashboard');
     
-    Route::get('users', function(){
-        return "users";
-    })->name('users');
+//     Route::get('users', function(){
+//         return "users";
+//     })->name('users');
     
-    Route::get('clients', function(){
-        return "clients";
-    })->name('clients');
+//     Route::get('clients', function(){
+//         return "clients";
+//     })->name('clients');
 
-});
-
-
-
-
-
-/////////////
-// PARTE 1 //
-/////////////
-
-// Route::get('/empresa', function() {
-//     return view('site/empresa');
-// });
-
-// Refactoring da rota /empresa que retorna apenas a view empresa
-// A view emprea está localizada em resources/views/site/empresa.blade.php
-
-// Route::any('/any', function() {
-//     return "Permite todo tipo de acesso http (put, delete, get, post)";
-// });
-
-// Route::match(['put', 'delete'],'/match', function() {
-//     return "Permite apenas acessos definidos";
-// });
-
-// Route::get('produto/{id}/{categoria?}', function($id, $cat = 'Default') {
-//     return "O id do produto é: ".$id." e a categoria é: ".$cat;
-// });
-
-// Route::redirect('/sobre', '/empresa');
-// Route::view('/empresa', 'site/empresa');
-
-// Route::get('/timesnownews', function(){
-//     return view('/news');
-// })->name('noticias');
-
-// Route::get('/novidades', function(){
-//     return redirect()->route('noticias');
 // });
